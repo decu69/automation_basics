@@ -2,7 +2,7 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 success = True
-wd = WebDriver()
+wd = WebDriver(r"myDir\chromedriver.exe")
 wd.implicitly_wait(60)
 
 def is_alert_present(wd):
@@ -22,7 +22,7 @@ try:
     wd.find_element_by_name("bug_content").clear()
     wd.find_element_by_name("bug_content").send_keys("test1")
     wd.find_element_by_id("send-button").click()
-    if not ("Test with id: '123' was not found." in wd.find_element_by_tag_name("html").text):
+    if not ("Team with id: '123' was not found." in wd.find_element_by_tag_name("html").text):
         success = False
         print("verifyTextPresent failed")
     wd.find_element_by_xpath("//div[@class='container']//button[.='Go back']").click()
